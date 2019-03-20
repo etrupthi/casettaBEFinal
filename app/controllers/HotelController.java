@@ -186,7 +186,10 @@ public class HotelController extends Controller {
     @Transactional
     public Result searchHotels(String location, Integer maxP){
 
-        Collection<Hotel> hotels = hotelDao.search(location, maxP);
+        final JsonNode json = request().body().asJson();
+        final String roomType = json.get("roomType").asText();
+
+        Collection<Hotel> hotels = hotelDao.search(location, maxP, roomType);
 
         for (Hotel h : hotels) {
             String[] images = imageDao.getImageById(h.getId());

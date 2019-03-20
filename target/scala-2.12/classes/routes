@@ -13,9 +13,12 @@ PUT /users/signout        controllers.UsersController.signOutUser()
 
 
 +nocsrf
-POST /hotels                 controllers.HotelController.createHotel()
+POST /hotels                   controllers.HotelController.searchHotels(location: String ?= null, maxP: Integer ?= null)
 
-GET /hotels                   controllers.HotelController.searchHotels(location: String ?= null, maxP: Integer ?= null)
++nocsrf
+POST /hotel                 controllers.HotelController.createHotel()
+
+
 
 +nocsrf
 POST /hotels/username         controllers.HotelController.getHotelByUsername()

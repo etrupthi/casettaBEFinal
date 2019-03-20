@@ -20,9 +20,22 @@ public class Hotel {
     @JsonProperty("location")
     private String location;
 
+      @Basic
+    @JsonProperty("sprice")
+    private Integer sprice;
+
     @Basic
-    @JsonProperty("price")
-    private Integer price;
+    @JsonProperty("dprice")
+    private Integer dprice;
+
+    @Basic
+    @JsonProperty("suprice")
+    private Integer suprice;
+
+    @Basic
+    @JsonProperty("address")
+    private String address;
+
 
     @Basic
     @JsonProperty("rating")
@@ -49,17 +62,20 @@ public class Hotel {
     private User user;
 
 
-    public Hotel(Integer id, String name, String location, Integer price,String rating,String description, String url, String amenities, String[] imageUrls)
+    public Hotel(Integer id, String name, String location, String rating,String description, String url, String amenities, String[] imageUrls, Integer sprice, Integer dprice, Integer suprice, String address)
     {
         this.id=id;
         this.name = name;
         this.location = location;
-        this.price = price;
+        this.sprice = sprice;
+        this.dprice = dprice;
+        this.suprice = suprice;
         this.rating = rating;
         this.description=description;
         this.url=url;
         this.amenities=amenities;
         this.imageUrls = imageUrls;
+        this.address = address;
     }
 
     public Hotel() {
@@ -89,12 +105,36 @@ public class Hotel {
         this.location = location;
     }
 
-    public Integer getPrice() {
-        return price;
+    public Integer getSprice() {
+        return sprice;
     }
 
-    public void setPrice(Integer price) {
-        this.price = price;
+    public void setSprice(Integer sprice) {
+        this.sprice = sprice;
+    }
+
+    public Integer getDprice() {
+        return dprice;
+    }
+
+    public void setDprice(Integer dprice) {
+        this.dprice = dprice;
+    }
+
+    public Integer getSuprice() {
+        return suprice;
+    }
+
+    public void setSuprice(Integer suprice) {
+        this.suprice = suprice;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getRating() {
@@ -144,5 +184,8 @@ public class Hotel {
     public void setImageUrls(String[] imageUrls) {
         this.imageUrls = imageUrls;
     }
+
+
+
 }
 

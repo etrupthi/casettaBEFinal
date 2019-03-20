@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/Users/yaswanthi/Documents/casettaBE/conf/routes
-// @DATE:Tue Mar 19 13:52:36 IST 2019
+// @SOURCE:/Users/yaswanthi/Documents/casettaBEFinal/conf/routes
+// @DATE:Wed Mar 20 16:28:21 IST 2019
 
 package controllers;
 

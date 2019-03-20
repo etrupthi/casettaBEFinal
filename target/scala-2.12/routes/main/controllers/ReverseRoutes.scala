@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/Users/yaswanthi/Documents/casettaBE/conf/routes
-// @DATE:Tue Mar 19 13:52:36 IST 2019
+// @SOURCE:/Users/yaswanthi/Documents/casettaBEFinal/conf/routes
+// @DATE:Wed Mar 20 16:28:21 IST 2019
 
 import play.api.mvc.Call
 
@@ -11,14 +11,14 @@ import _root_.play.libs.F
 // @LINE:6
 package controllers {
 
-  // @LINE:48
+  // @LINE:51
   class ReverseAssets(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:48
+    // @LINE:51
     def versioned(file:Asset): Call = {
       implicit lazy val _rrc = new play.core.routing.ReverseRouteContext(Map(("path", "/public"))); _rrc
       Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[play.api.mvc.PathBindable[Asset]].unbind("file", file))
@@ -26,14 +26,14 @@ package controllers {
   
   }
 
-  // @LINE:43
+  // @LINE:46
   class ReverseCountController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:43
+    // @LINE:46
     def count(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "count")
@@ -74,14 +74,14 @@ package controllers {
   
   }
 
-  // @LINE:41
+  // @LINE:44
   class ReverseHomeController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:41
+    // @LINE:44
     def index(): Call = {
       
       Call("GET", _prefix)
@@ -89,14 +89,14 @@ package controllers {
   
   }
 
-  // @LINE:45
+  // @LINE:48
   class ReverseAsyncController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:45
+    // @LINE:48
     def message(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "message")
@@ -104,26 +104,26 @@ package controllers {
   
   }
 
-  // @LINE:28
+  // @LINE:31
   class ReverseImagesController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:29
+    // @LINE:32
     def downloadImage(id:String): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "images/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[String]].unbind("id", id)))
     }
   
-    // @LINE:28
+    // @LINE:31
     def uploadImage(): Call = {
       
       Call("POST", _prefix + { _defaultPrefix } + "images")
     }
   
-    // @LINE:30
+    // @LINE:33
     def deleteImageByUrl(): Call = {
       
       Call("DELETE", _prefix + { _defaultPrefix } + "image")
@@ -138,37 +138,37 @@ package controllers {
     }
 
   
-    // @LINE:21
+    // @LINE:24
     def getHotelByUsername(): Call = {
       
       Call("POST", _prefix + { _defaultPrefix } + "hotels/username")
     }
   
-    // @LINE:34
+    // @LINE:37
     def updateHotelById(id:Integer): Call = {
       
       Call("PUT", _prefix + { _defaultPrefix } + "hotels/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Integer]].unbind("id", id)))
     }
   
-    // @LINE:16
+    // @LINE:19
     def createHotel(): Call = {
       
-      Call("POST", _prefix + { _defaultPrefix } + "hotels")
+      Call("POST", _prefix + { _defaultPrefix } + "hotel")
     }
   
-    // @LINE:33
+    // @LINE:36
     def getHotelById(id:Integer): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "hotels/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Integer]].unbind("id", id)))
     }
   
-    // @LINE:18
+    // @LINE:16
     def searchHotels(location:String = null, maxP:Integer = null): Call = {
       
-      Call("GET", _prefix + { _defaultPrefix } + "hotels" + play.core.routing.queryString(List(if(location == null) None else Some(implicitly[play.api.mvc.QueryStringBindable[String]].unbind("location", location)), if(maxP == null) None else Some(implicitly[play.api.mvc.QueryStringBindable[Integer]].unbind("maxP", maxP)))))
+      Call("POST", _prefix + { _defaultPrefix } + "hotels" + play.core.routing.queryString(List(if(location == null) None else Some(implicitly[play.api.mvc.QueryStringBindable[String]].unbind("location", location)), if(maxP == null) None else Some(implicitly[play.api.mvc.QueryStringBindable[Integer]].unbind("maxP", maxP)))))
     }
   
-    // @LINE:35
+    // @LINE:38
     def deleteHotelById(id:Integer): Call = {
       
       Call("DELETE", _prefix + { _defaultPrefix } + "hotels/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Integer]].unbind("id", id)))
