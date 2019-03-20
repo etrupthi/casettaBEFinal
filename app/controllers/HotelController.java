@@ -187,7 +187,7 @@ public class HotelController extends Controller {
     public Result searchHotels(String location, Integer maxP){
 
         final JsonNode json = request().body().asJson();
-        final String roomType = json.get("roomType").asText();
+        final String roomType = json.get("type").asText();
 
         Collection<Hotel> hotels = hotelDao.search(location, maxP, roomType);
 

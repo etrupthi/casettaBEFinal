@@ -81,7 +81,7 @@ public class HotelDaoImpl implements HotelDao {
         final String room = roomType;
         LOGGER.debug(room);
 
-        if(room.compareTo("Single")==0){
+        if(room.compareTo("single")==0){
 
             LOGGER.debug("Inside single");
 
@@ -117,7 +117,7 @@ public class HotelDaoImpl implements HotelDao {
             }
 
         }
-        else if(room.compareTo("Double")==0){
+        else if(room.compareTo("double")==0){
 
             if ((null == location) && (null == maxP)) {
 
