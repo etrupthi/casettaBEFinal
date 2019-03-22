@@ -49,9 +49,9 @@ public class Hotel {
     @JsonProperty("url")
     private String url;
 
-    @Basic
-    @JsonProperty("amenities")
-    private String amenities;
+//    @Basic
+//    @JsonProperty("amenities")
+//    private String amenities;
 
     @Transient
     @JsonProperty("imageUrls")
@@ -62,7 +62,12 @@ public class Hotel {
     private User user;
 
 
-    public Hotel(Integer id, String name, String location, String rating,String description, String url, String amenities, String[] imageUrls, Integer sprice, Integer dprice, Integer suprice, String address)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JsonProperty("amenities")
+    private Amenities amenities;
+
+
+    public Hotel(Integer id, String name, String location, String rating,String description, String url, String[] imageUrls, Integer sprice, Integer dprice, Integer suprice, String address)
     {
         this.id=id;
         this.name = name;
@@ -73,7 +78,7 @@ public class Hotel {
         this.rating = rating;
         this.description=description;
         this.url=url;
-        this.amenities=amenities;
+       // this.amenities=amenities;
         this.imageUrls = imageUrls;
         this.address = address;
     }
@@ -169,13 +174,13 @@ public class Hotel {
         this.user = user;
     }
 
-    public String getAmenities() {
-        return amenities;
-    }
-
-    public void setAmenities(String amenities) {
-        this.amenities = amenities;
-    }
+//    public String getAmenities() {
+//        return amenities;
+//    }
+//
+//    public void setAmenities(String amenities) {
+//        this.amenities = amenities;
+//    }
 
     public String[] getImageUrls() {
         return imageUrls;
@@ -185,7 +190,12 @@ public class Hotel {
         this.imageUrls = imageUrls;
     }
 
+    public Amenities getAmenities() {
+        return amenities;
+    }
 
-
+    public void setAmenities(Amenities amenities) {
+        this.amenities = amenities;
+    }
 }
 

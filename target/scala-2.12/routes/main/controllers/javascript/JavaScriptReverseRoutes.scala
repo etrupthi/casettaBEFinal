@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/yaswanthi/Documents/casettaBEFinal/conf/routes
-// @DATE:Wed Mar 20 16:28:21 IST 2019
+// @DATE:Fri Mar 22 12:18:43 IST 2019
 
 import play.api.routing.JavaScriptReverseRoute
 
