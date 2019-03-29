@@ -45,6 +45,14 @@ public class Hotel {
     @JsonProperty("description")
     private String description;
 
+//    @Basic
+//    @JsonProperty("latitude")
+//    private String latitude;
+//
+//    @Basic
+//    @JsonProperty("longitude")
+//    private String longitude;
+
     @Basic
     @JsonProperty("url")
     private String url;
@@ -67,7 +75,7 @@ public class Hotel {
     private Amenities amenities;
 
 
-    public Hotel(Integer id, String name, String location, String rating,String description, String url, String[] imageUrls, Integer sprice, Integer dprice, Integer suprice, String address)
+    public Hotel(Integer id, String name, String location, String rating, String description, String url, String[] imageUrls, Integer sprice, Integer dprice, Integer suprice, String address)
     {
         this.id=id;
         this.name = name;
@@ -81,6 +89,8 @@ public class Hotel {
        // this.amenities=amenities;
         this.imageUrls = imageUrls;
         this.address = address;
+//        this.latitude=latitude;
+//        this.longitude=longitude;
     }
 
     public Hotel() {
@@ -174,14 +184,6 @@ public class Hotel {
         this.user = user;
     }
 
-//    public String getAmenities() {
-//        return amenities;
-//    }
-//
-//    public void setAmenities(String amenities) {
-//        this.amenities = amenities;
-//    }
-
     public String[] getImageUrls() {
         return imageUrls;
     }
@@ -197,5 +199,21 @@ public class Hotel {
     public void setAmenities(Amenities amenities) {
         this.amenities = amenities;
     }
+
+//    public String getLatitude() {
+//        return latitude;
+//    }
+//
+//    public void setLatitude(String latitude) {
+//        this.latitude = latitude;
+//    }
+//
+//    public String getLongitude() {
+//        return longitude;
+//    }
+//
+//    public void setLongitude(String longitude) {
+//        this.longitude = longitude;
+//    }
 }
 
