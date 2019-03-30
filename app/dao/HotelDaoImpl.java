@@ -1,6 +1,7 @@
 package dao;
 
 import controllers.HotelController;
+import models.Amenities;
 import models.Hotel;
 import models.Image;
 import play.db.jpa.JPAApi;
@@ -193,6 +194,10 @@ public class HotelDaoImpl implements HotelDao {
             return null;
         }
 
+        final Integer amenid = existingHotel.getAmenities().getId();
+
+        final Amenities existingAmenities = jpaApi.em().find(Amenities.class,amenid);
+
 
         if(null!=hotel.getName()) {
 
@@ -230,10 +235,15 @@ public class HotelDaoImpl implements HotelDao {
         if(null!=hotel.getAmenities()) {
 
             existingHotel.setAmenities(hotel.getAmenities());
+
         }
 
 
         existingHotel.setName(hotel.getName());
+
+
+        jpaApi.em().remove(existingAmenities);
+
 
         jpaApi.em().persist(existingHotel);
 

@@ -37,63 +37,63 @@ public class ImagesController extends Controller {
 
     }
 
-//    public Result uploadImage() {
-//
-//        final Http.MultipartFormData<File> body = request().body().asMultipartFormData();
-//        if (null == body) {
-//            return badRequest("Not multipart request");
-//        }
-//
-//        final Http.MultipartFormData.FilePart<File> image = body.getFile("file");
-//        if (null == image) {
-//            return badRequest("No file found");
-//        }
-//
-//        if (!image.getContentType().equals("image/png")) {
-//            return badRequest("only PNG format supported");
-//        }
-//
-//        final Path source = image.getFile().toPath();
-//
-//        String imageId = imageStore.save(source);
-//
-//        final String downloadUrl = routes.ImagesController.downloadImage(imageId).absoluteURL(request());
-//
-//        final ObjectNode result = Json.newObject();
-//        result.put("image_url", downloadUrl);
-//        //result.put("imageId", imageId);
-//
-//        return ok(result);
-//    }
+    public Result uploadImage() {
 
-    public Result uploadImage(){
-
-        ArrayList<String> Images = new ArrayList();
-
-        List<Http.MultipartFormData.FilePart<Object>> myFiles = request().body().asMultipartFormData().getFiles();
-
-        Iterator itr = myFiles.iterator();
-        while(itr.hasNext()){
-
-            Http.MultipartFormData.FilePart<File> item  = (Http.MultipartFormData.FilePart) itr.next();
-            final Path source = item.getFile().toPath();
-            String imageId = imageStore.save(source);
-            final String downloadUrl = routes.ImagesController.downloadImage(imageId).absoluteURL(request());
-            Images.add(downloadUrl);
-
+        final Http.MultipartFormData<File> body = request().body().asMultipartFormData();
+        if (null == body) {
+            return badRequest("Not multipart request");
         }
 
-        LOGGER.debug(Images.toString());
+        final Http.MultipartFormData.FilePart<File> image = body.getFile("file");
+        if (null == image) {
+            return badRequest("No file found");
+        }
 
-        //final JsonNode result = Json.toJson(Images);
+        if (!image.getContentType().equals("image/png")) {
+            return badRequest("only PNG format supported");
+        }
 
-        ObjectMapper mapper = new ObjectMapper();
-        ArrayNode array = mapper.valueToTree(Images);
-        final ObjectNode Result = Json.newObject();
-        Result.putArray("image_url").addAll(array);
+        final Path source = image.getFile().toPath();
 
-        return ok(Result);
+        String imageId = imageStore.save(source);
+
+        final String downloadUrl = routes.ImagesController.downloadImage(imageId).absoluteURL(request());
+
+        final ObjectNode result = Json.newObject();
+        result.put("image_url", downloadUrl);
+        //result.put("imageId", imageId);
+
+        return ok(result);
     }
+
+//    public Result uploadImage(){
+//
+//        ArrayList<String> Images = new ArrayList();
+//
+//        List<Http.MultipartFormData.FilePart<Object>> myFiles = request().body().asMultipartFormData().getFiles();
+//
+//        Iterator itr = myFiles.iterator();
+//        while(itr.hasNext()){
+//
+//            Http.MultipartFormData.FilePart<File> item  = (Http.MultipartFormData.FilePart) itr.next();
+//            final Path source = item.getFile().toPath();
+//            String imageId = imageStore.save(source);
+//            final String downloadUrl = routes.ImagesController.downloadImage(imageId).absoluteURL(request());
+//            Images.add(downloadUrl);
+//
+//        }
+//
+//        LOGGER.debug(Images.toString());
+//
+//        //final JsonNode result = Json.toJson(Images);
+//
+//        ObjectMapper mapper = new ObjectMapper();
+//        ArrayNode array = mapper.valueToTree(Images);
+//        final ObjectNode Result = Json.newObject();
+//        Result.putArray("image_url").addAll(array);
+//
+//        return ok(Result);
+//    }
 
     public Result downloadImage(String id) {
 

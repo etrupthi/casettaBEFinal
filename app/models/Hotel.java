@@ -20,7 +20,7 @@ public class Hotel {
     @JsonProperty("location")
     private String location;
 
-      @Basic
+    @Basic
     @JsonProperty("sprice")
     private Integer sprice;
 
@@ -45,13 +45,13 @@ public class Hotel {
     @JsonProperty("description")
     private String description;
 
-//    @Basic
-//    @JsonProperty("latitude")
-//    private String latitude;
-//
-//    @Basic
-//    @JsonProperty("longitude")
-//    private String longitude;
+    @Basic
+    @JsonProperty("latitude")
+    private String latitude;
+
+    @Basic
+    @JsonProperty("longitude")
+    private String longitude;
 
     @Basic
     @JsonProperty("url")
@@ -69,13 +69,12 @@ public class Hotel {
     @JoinColumn(name = "username")
     private User user;
 
-
     @OneToOne(cascade = CascadeType.ALL)
     @JsonProperty("amenities")
     private Amenities amenities;
 
 
-    public Hotel(Integer id, String name, String location, String rating, String description, String url, String[] imageUrls, Integer sprice, Integer dprice, Integer suprice, String address)
+    public Hotel(Integer id, String name, String location, String rating, String description, String url, String[] imageUrls, Integer sprice, Integer dprice, Integer suprice, String address, String latitude, String longitude)
     {
         this.id=id;
         this.name = name;
@@ -89,8 +88,8 @@ public class Hotel {
        // this.amenities=amenities;
         this.imageUrls = imageUrls;
         this.address = address;
-//        this.latitude=latitude;
-//        this.longitude=longitude;
+        this.latitude=latitude;
+        this.longitude=longitude;
     }
 
     public Hotel() {
@@ -200,20 +199,20 @@ public class Hotel {
         this.amenities = amenities;
     }
 
-//    public String getLatitude() {
-//        return latitude;
-//    }
-//
-//    public void setLatitude(String latitude) {
-//        this.latitude = latitude;
-//    }
-//
-//    public String getLongitude() {
-//        return longitude;
-//    }
-//
-//    public void setLongitude(String longitude) {
-//        this.longitude = longitude;
-//    }
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
 }
 
