@@ -227,6 +227,17 @@ public class HotelDaoImpl implements HotelDao {
 
             existingHotel.setUrl(hotel.getUrl());
         }
+
+        if(null!=hotel.getLatitude()) {
+
+            existingHotel.setUrl(hotel.getLatitude());
+        }
+
+        if(null!=hotel.getLongitude()) {
+
+            existingHotel.setUrl(hotel.getLongitude());
+        }
+
         if(null!=hotel.getDescription()) {
 
             existingHotel.setDescription(hotel.getDescription());
