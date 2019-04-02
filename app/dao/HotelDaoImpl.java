@@ -98,7 +98,7 @@ public class HotelDaoImpl implements HotelDao {
 
                 LOGGER.debug("Inside single2");
 
-                TypedQuery<Hotel> query = jpaApi.em().createQuery("SELECT b FROM Hotel b where (location = '" + location + "' OR name = '" +location+ "')", Hotel.class);
+                TypedQuery<Hotel> query = jpaApi.em().createQuery("SELECT b FROM Hotel b where (location like '" + location + "%' OR name like '" +location+ "%')", Hotel.class);
                 List<Hotel> hotels = query.getResultList();
                 return hotels;
             } else if (null == location) {
@@ -112,7 +112,7 @@ public class HotelDaoImpl implements HotelDao {
 
                 LOGGER.debug("Inside single4");
 
-                TypedQuery<Hotel> query = jpaApi.em().createQuery("SELECT b FROM Hotel b where (location = '" + location + "' OR name = '" +location+ "') AND (sprice BETWEEN 0 AND '"+maxP+"') ", Hotel.class);
+                TypedQuery<Hotel> query = jpaApi.em().createQuery("SELECT b FROM Hotel b where (location like '" + location + "%' OR name like '" +location+ "%') AND (sprice BETWEEN 0 AND '"+maxP+"') ", Hotel.class);
                 List<Hotel> hotels = query.getResultList();
                 return hotels;
             }
@@ -127,7 +127,7 @@ public class HotelDaoImpl implements HotelDao {
 
                 return hotels;
             } else if (null == maxP) {
-                TypedQuery<Hotel> query = jpaApi.em().createQuery("SELECT b FROM Hotel b where (location = '" + location + "' OR name = '" +location+ "')", Hotel.class);
+                TypedQuery<Hotel> query = jpaApi.em().createQuery("SELECT b FROM Hotel b where (location like '" + location + "%' OR name like '" +location+ "%')", Hotel.class);
                 List<Hotel> hotels = query.getResultList();
                 return hotels;
             } else if (null == location) {
@@ -135,7 +135,7 @@ public class HotelDaoImpl implements HotelDao {
                 List<Hotel> hotels = query.getResultList();
                 return hotels;
             } else {
-                TypedQuery<Hotel> query = jpaApi.em().createQuery("SELECT b FROM Hotel b where (location = '" + location + "' OR name = '" +location+ "') AND (dprice BETWEEN 0 AND '"+maxP+"') ", Hotel.class);
+                TypedQuery<Hotel> query = jpaApi.em().createQuery("SELECT b FROM Hotel b where (location like '" + location + "%' OR name like '" +location+ "%') AND (dprice BETWEEN 0 AND '"+maxP+"') ", Hotel.class);
                 List<Hotel> hotels = query.getResultList();
                 return hotels;
             }
@@ -150,7 +150,7 @@ public class HotelDaoImpl implements HotelDao {
 
                 return hotels;
             } else if (null == maxP) {
-                TypedQuery<Hotel> query = jpaApi.em().createQuery("SELECT b FROM Hotel b where (location = '" + location + "' OR name = '" + location + "')", Hotel.class);
+                TypedQuery<Hotel> query = jpaApi.em().createQuery("SELECT b FROM Hotel b where (location like '" + location + "%' OR name like '" + location + "%')", Hotel.class);
                 List<Hotel> hotels = query.getResultList();
                 return hotels;
             } else if (null == location) {
@@ -158,7 +158,7 @@ public class HotelDaoImpl implements HotelDao {
                 List<Hotel> hotels = query.getResultList();
                 return hotels;
             } else {
-                TypedQuery<Hotel> query = jpaApi.em().createQuery("SELECT b FROM Hotel b where (location = '" + location + "' OR name = '" + location + "') AND (suprice BETWEEN 0 AND '" + maxP + "') ", Hotel.class);
+                TypedQuery<Hotel> query = jpaApi.em().createQuery("SELECT b FROM Hotel b where (location like '" + location + "%' OR name like '" + location + "%') AND (suprice BETWEEN 0 AND '" + maxP + "') ", Hotel.class);
                 List<Hotel> hotels = query.getResultList();
                 return hotels;
             }
