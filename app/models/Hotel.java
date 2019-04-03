@@ -33,6 +33,7 @@ public class Hotel {
     private Integer suprice;
 
     @Basic
+    @Column(length = 7000)
     @JsonProperty("address")
     private String address;
 
@@ -42,6 +43,7 @@ public class Hotel {
     private String rating;
 
     @Basic
+    @Column(length = 7000)
     @JsonProperty("description")
     private String description;
 

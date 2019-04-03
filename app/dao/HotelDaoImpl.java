@@ -7,6 +7,7 @@ import models.Image;
 import play.db.jpa.JPAApi;
 import play.libs.F;
 import javax.inject.Inject;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import java.util.Collection;
 import java.util.List;
@@ -46,18 +47,25 @@ public class HotelDaoImpl implements HotelDao {
     }
 
 
-//    public Optional<Hotel> findHotel(String name, String location){
-//
-//
-//        if((null==name)||(null==location)){
-//            throw new IllegalArgumentException("Name or Location must be provided");
-//        }
-//
-//        TypedQuery<Hotel> query = jpaApi.em().createQuery("SELECT b FROM Hotel b where name = '" + name + "' AND location = '" + location + "'",Hotel.class);
-//        query.setMaxResults(1);
-//        final Hotel hotel = query.getResultList();
-//        return hotel != null ? Optional.of(hotel) : Optional.empty();
-//    }
+    public Boolean findHotel(String hname, String hlocation){
+
+    Hotel hotel = null;
+        if((null==hname)||(null==hlocation)){
+            throw new IllegalArgumentException("Name or Location must be provided");
+        }
+
+        TypedQuery<Hotel> query = jpaApi.em().createQuery("SELECT b FROM Hotel b where name = '" + hname + "' AND location = '" + hlocation + "'",Hotel.class);
+    try{
+         hotel = query.getSingleResult();
+    }
+    catch(NoResultException nre){}
+
+    if(null==hotel){
+            return false;
+    }
+        return true;
+    }
+
 
 
     public Collection<Hotel> searchByUsername(String username){

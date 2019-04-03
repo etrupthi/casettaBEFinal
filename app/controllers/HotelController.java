@@ -48,18 +48,25 @@ public class HotelController extends Controller {
 //            return badRequest("Hotel exists already");
 //        }
 
-        final Hotel newHotel = hotelDao.create(hotel);
-
-        for (String url : hotel.getImageUrls()) {
-            final Image image = new Image(url);
-            image.setImageUrl(url);
-            image.setHotel(newHotel);
-            imageDao.create(image);
+        final Boolean present = hotelDao.findHotel(hotel.getName(),hotel.getLocation());
+        if(present == true){
+            return badRequest("Hotel already exists");
         }
+        else {
 
-        final JsonNode result = Json.toJson(newHotel);
+            final Hotel newHotel = hotelDao.create(hotel);
 
-        return ok(result);
+            for (String url : hotel.getImageUrls()) {
+                final Image image = new Image(url);
+                image.setImageUrl(url);
+                image.setHotel(newHotel);
+                imageDao.create(image);
+            }
+
+            final JsonNode result = Json.toJson(newHotel);
+
+            return ok(result);
+        }
     }
 
 

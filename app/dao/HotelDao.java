@@ -10,7 +10,7 @@ public interface HotelDao extends CrudDao<Hotel, Integer> {
 
     Collection<Hotel> search(String location,Integer maxP, String roomType);
     Collection<Hotel> searchByUsername(String username);
-//    Optional<Hotel> findHotel(String name, String location);
+    Boolean findHotel(String name, String location);
 
 }
 
