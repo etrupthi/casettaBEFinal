@@ -8,7 +8,6 @@ import javax.persistence.*;
 public class Image {
 
     @Id
-    @Column(length = 1000)
     @JsonProperty("imageUrl")
     private String imageUrl;
 

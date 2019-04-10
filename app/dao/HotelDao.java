@@ -9,6 +9,7 @@ import java.util.Optional;
 public interface HotelDao extends CrudDao<Hotel, Integer> {
 
     Collection<Hotel> search(String location,Integer maxP, String roomType);
+    Collection<Hotel> searchHotelsByLocation(String lat,String lng);
     Collection<Hotel> searchByUsername(String username);
     Boolean findHotel(String name, String location);
 

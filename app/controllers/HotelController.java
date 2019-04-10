@@ -207,7 +207,27 @@ public class HotelController extends Controller {
         return ok(result);
     }
 
+    @Transactional
+    public Result searchByLocation () {
+
+        final JsonNode json = request().body().asJson();
+        final String lat = json.get("lat").asText();
+        final String lng = json.get("lng").asText();
+
+        Collection<Hotel> hotels = hotelDao.searchHotelsByLocation(lat,lng);
+
+        for (Hotel h : hotels) {
+            String[] images = imageDao.getImageById(h.getId());
+            h.setImageUrls(images);
+        }
+
+        final JsonNode result = Json.toJson(hotels);
+
+        return ok(result);
+    }
+
 }
+
 
 
 

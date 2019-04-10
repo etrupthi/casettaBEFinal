@@ -24,7 +24,7 @@ POST /hotel                 controllers.HotelController.createHotel()
 POST /hotels/username         controllers.HotelController.getHotelByUsername()
 
 #GET  /hotels                controllers.HotelController.getAllHotels()
-#GET /hotels                  controllers.HotelController.searchHotels(location: String ?= null, price: Integer ?= null)
+POST /hotelsL                  controllers.HotelController.searchByLocation()
 
 
 +nocsrf
